@@ -32,5 +32,5 @@ jobs:
       - name: Publish Jars
         run: ./gradlew publish
         env:
-          PUBLISH-TOKEN: ${{secrets.MAVEN_PUBLISH_TOKEN}}
+          PUBLISH_TOKEN: ${{secrets.MAVEN_PUBLISH_TOKEN}}
           VERSION: ${GITHUB_REF#refs/tags/}

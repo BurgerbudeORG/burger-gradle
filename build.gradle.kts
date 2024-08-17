@@ -30,7 +30,7 @@ subprojects {
     }
 
     repositories {
-      val publishToken = providers.environmentVariable("Publish-Token")
+      val publishToken = providers.environmentVariable("PUBLISH_TOKEN")
       if (publishToken.isPresent) {
         maven {
           name = "Burgerbude"
