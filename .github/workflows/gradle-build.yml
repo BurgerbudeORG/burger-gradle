@@ -20,6 +20,9 @@ jobs:
 
       - name: Echo exact java version being used
         run: java -version
+      - name: Get Tag Name
+        id: tag_name
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
@@ -33,4 +36,4 @@ jobs:
         run: ./gradlew publish
         env:
           PUBLISH_TOKEN: ${{secrets.MAVEN_PUBLISH_TOKEN}}
-          VERSION: ${GITHUB_REF#refs/tags/}
+          VERSION: ${{steps.tag_name.outputs.VERSION}}
