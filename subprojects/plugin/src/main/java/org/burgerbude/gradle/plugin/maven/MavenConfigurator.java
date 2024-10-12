@@ -4,6 +4,8 @@ import org.burgerbude.gradle.plugin.BurgerPlugin;
 import org.gradle.api.Project;
 import org.gradle.api.artifacts.dsl.RepositoryHandler;
 import org.gradle.api.credentials.HttpHeaderCredentials;
+import org.gradle.api.logging.Logger;
+import org.gradle.api.logging.Logging;
 import org.gradle.api.provider.Provider;
 import org.gradle.api.provider.ProviderFactory;
 import org.gradle.api.publish.PublicationContainer;
@@ -15,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class MavenConfigurator {
 
+  private static final Logger LOGGER = Logging.getLogger(MavenConfigurator.class);
   private Project project;
 
   public MavenConfigurator() {
@@ -50,6 +53,7 @@ public class MavenConfigurator {
       return;
     }
 
+    LOGGER.lifecycle("> Publish token was found. Configuring maven repository.");
     handler.maven(repository -> {
       repository.setName("Burgerbude");
       repository.setUrl(BurgerPlugin.BASE_URL + "upload/");
