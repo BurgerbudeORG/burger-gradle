@@ -7,7 +7,7 @@ public final class GradleUtil {
 
   private static final String DEFAULT_VERSION = "1.0.0-SNAPSHOT";
   private static final String ENV_VERSION_KEY = "VERSION";
-  private static final String PROPERTY_VERSION_KEY = "version";
+  private static final String PROPERTY_VERSION_KEY = "projectVersion";
 
   public static String getVersion(final Project project) {
     ProviderFactory providers = project.getProviders();
